@@ -1,0 +1,1 @@
+REM start "" "C:\path\to\kafka\bin\windows\zookeeper-server-start.bat" "C:\path\to\kafka\config\zookeeper.properties"
