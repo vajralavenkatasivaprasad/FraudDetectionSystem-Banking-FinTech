@@ -1,11 +1,5 @@
-pandas
-numpy
-scikit-learn
-matplotlib
-seaborn
-streamlit==1.28.1
-pyspark
-kafka-python
-joblib
-altair==5.0.1
-plotly
+# Required packages
+
+bcrypt
+python-dotenv
+streamlit-authenticator
