@@ -7,3 +7,4 @@ streamlit
 pyspark
 kafka-python
 joblib
+altair
