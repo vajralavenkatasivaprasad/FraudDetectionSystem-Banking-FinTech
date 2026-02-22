@@ -1,5 +1,16 @@
-# Required packages
-
-bcrypt
-python-dotenv
-streamlit-authenticator
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+streamlit==1.28.1
+pyspark
+kafka-python
+joblib
+altair==5.0.1
+plotly
+bcrypt==4.0.1
+python-dotenv==1.0.0
+streamlit-authenticator==0.2.3
+requests==2.31.0
+sqlalchemy==2.0.23
