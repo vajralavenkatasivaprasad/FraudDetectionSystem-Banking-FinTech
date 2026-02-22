@@ -3,7 +3,6 @@ import pandas as pd
 import joblib
 import numpy as np
 import time
-import random
 
 st.set_page_config(page_title="Fraud Detection System", layout="wide")
 
@@ -17,6 +16,11 @@ def load_model():
 
 model = load_model()
 
+# Column names used in training
+columns = ['V1','V2','V3','V4','V5','V6','V7','V8','V9','V10',
+           'V11','V12','V13','V14','V15','V16','V17','V18','V19','V20',
+           'V21','V22','V23','V24','V25','V26','V27','V28','Amount','Time']
+
 fraud_count = 0
 legit_count = 0
 
@@ -29,9 +33,10 @@ if run:
     chart = st.line_chart(chart_data)
 
     for i in range(20):
-        transaction = np.random.randn(1, 30)
+        transaction = np.random.randn(30)  # 1 transaction with 30 features
+        transaction_df = pd.DataFrame([transaction], columns=columns)  # Fix for feature names
 
-        prediction = model.predict(transaction)[0]
+        prediction = model.predict(transaction_df)[0]
 
         if prediction == 1:
             fraud_count += 1
@@ -40,9 +45,7 @@ if run:
             legit_count += 1
             st.success(f"Transaction {i+1}: LEGIT")
 
-        new_data = pd.DataFrame(
-            {"Fraud": [fraud_count], "Legit": [legit_count]}
-        )
+        new_data = pd.DataFrame({"Fraud": [fraud_count], "Legit": [legit_count]})
         chart.add_rows(new_data)
 
         time.sleep(0.5)
@@ -55,7 +58,8 @@ for i in range(30):
     input_data.append(value)
 
 if st.button("Predict Manual Transaction"):
-    prediction = model.predict([input_data])[0]
+    input_df = pd.DataFrame([input_data], columns=columns)  # Fix for feature names
+    prediction = model.predict(input_df)[0]
     if prediction == 1:
         st.error("⚠ Fraud Transaction Detected")
     else:
