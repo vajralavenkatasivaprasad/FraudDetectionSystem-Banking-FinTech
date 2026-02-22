@@ -8,6 +8,4 @@ pyspark
 kafka-python
 joblib
 altair
-Plotly
-Matplotlib
-Seaborn
+plotly
